@@ -1,0 +1,9 @@
+div.main-content {
+    padding-top: 20px;
+}
+
+@media (min-width: 768px) {
+    .convert-button-margin {
+        margin-top: 31px;
+    }
+}

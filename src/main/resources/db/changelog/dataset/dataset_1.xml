@@ -7,5 +7,19 @@
         <insert tableName="authority">
             <column name="name" value="ROLE_USER"/>
         </insert>
+
+        <insert tableName="user">
+            <column name="email" value="admin@galjente.eu"/>
+            <column name="password" value="$2a$10$45Z80UR2X7N19LzOssdRquI29y34SKRsIiVcb3kvsT/fLzautx6DO"/>
+            <column name="country" value="Latvia"/>
+            <column name="city" value="Riga"/>
+            <column name="address" value="Home address 12"/>
+            <column name="zip" value="LV-1000"/>
+        </insert>
+
+        <insert tableName="user_authority">
+            <column name="user_fk" valueComputed="(SELECT id FROM user WHERE email = 'admin@galjente.eu')"/>
+            <column name="authority_fk" valueComputed="(SELECT id FROM authority WHERE name = 'ROLE_USER')"/>
+        </insert>
     </changeSet>
 </databaseChangeLog>

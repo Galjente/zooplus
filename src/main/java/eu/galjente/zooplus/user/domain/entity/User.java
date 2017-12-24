@@ -1,5 +1,6 @@
 package eu.galjente.zooplus.user.domain.entity;
 
+import eu.galjente.zooplus.system.Convertible;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import static java.util.stream.Collectors.toSet;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Convertible<User> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -123,4 +124,5 @@ public class User {
 				.map((authority) -> new SimpleGrantedAuthority(authority.getName()))
 				.collect(toSet());
 	}
+
 }

@@ -48,7 +48,7 @@ public class ResourceIntegrationTest {
 
 	@Test
 	public void testJQueryJs() {
-		ResponseEntity<String> entity = restTemplate.getForEntity("/webjars/jquery/3.2.1/jquery.min.js", String.class);
+		ResponseEntity<String> entity = restTemplate.getForEntity("/webjars/jquery-slim/3.0.0/dist/jquery.slim.min.js", String.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(entity.getBody()).contains("jquery");
 	}
