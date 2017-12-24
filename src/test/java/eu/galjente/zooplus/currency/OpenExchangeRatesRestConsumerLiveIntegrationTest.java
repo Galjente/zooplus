@@ -6,6 +6,7 @@ import eu.galjente.zooplus.currency.dto.ConvertRequestDto;
 import eu.galjente.zooplus.currency.dto.CurrencyDto;
 import eu.galjente.zooplus.currency.dto.ExchangeRatesDto;
 import eu.galjente.zooplus.currency.exception.OpenExchangeRatesException;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,7 @@ public class OpenExchangeRatesRestConsumerLiveIntegrationTest {
 	}
 
 	@Test
+	@Ignore
 	public void testValidConvertValue() throws IOException, OpenExchangeRatesException {
 		// when
 		ConvertDto convertedValue = consumer.convertValue(BASE_CURRENCY, CONVERT_TO_CURRENCY, CONVERT_AMOUNT);
