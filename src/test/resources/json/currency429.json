@@ -1,0 +1,6 @@
+{
+  "error": true,
+  "status": 429,
+  "message": "not_allowed",
+  "description": "Client doesn’t have permission to access requested route/feature - please contact support@openexchangerates.org to upgrade your account."
+}

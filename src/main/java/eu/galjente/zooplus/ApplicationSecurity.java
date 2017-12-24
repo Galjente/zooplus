@@ -1,11 +1,12 @@
 package eu.galjente.zooplus;
 
 import eu.galjente.zooplus.user.CustomUserDetailService;
-import eu.galjente.zooplus.user.domain.entity.Authority;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -14,15 +15,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
-	private final static String[] PUBLIC_PAGE_URIS = {"/h2-console/**", "/registration"};
-	private final static String[] RESOURCE_URIS = {"/favicon.ico", "/css/**", "/webjars/**"};
+	private final static String[] RESOURCE_URIS = {"/favicon.ico", "/css/**", "/js/**", "/webjars/**"};
 
+	private final String[] publicPagesUri;
 	private final CustomUserDetailService customUserDetailService;
 
 	@Autowired
-	public ApplicationSecurity(CustomUserDetailService customUserDetailService) {
+	public ApplicationSecurity(@Value("${security.public.pages}") String[] publicPagesUri,  CustomUserDetailService customUserDetailService) {
+		this.publicPagesUri = publicPagesUri;
 		this.customUserDetailService = customUserDetailService;
 	}
 
@@ -44,9 +47,11 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 		http.csrf()
 				.disable()
 			.authorizeRequests()
-				.antMatchers(PUBLIC_PAGE_URIS).permitAll()
-				.anyRequest().hasAnyRole(Authority.ROLE_USER)
+				.antMatchers(publicPagesUri).permitAll()
+				.anyRequest().authenticated()
 				.and().formLogin()
+					.usernameParameter("email")
+					.passwordParameter("password")
 					.loginPage("/login")
 					.failureUrl("/login?error")
 					.permitAll()

@@ -1,0 +1,6 @@
+{
+  "error": true,
+  "status": 404,
+  "message": "not_found",
+  "description": "Client requested a non-existent resource/route - please contact support@openexchangerates.org to upgrade your account."
+}
