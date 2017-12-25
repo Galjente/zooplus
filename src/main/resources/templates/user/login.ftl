@@ -15,12 +15,6 @@
 				<label class="sr-only">Password</label>
 				<input name="password" type="password" class="form-control" placeholder="Password" required/>
 
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" value="remember-me"> Remember me
-					</label>
-				</div>
-
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 				<a class="btn btn-secondary btn-lg btn-block" href="/registration">Registration</a>
 			</form>
