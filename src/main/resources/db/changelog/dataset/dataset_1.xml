@@ -22,4 +22,15 @@
             <column name="authority_fk" valueComputed="(SELECT id FROM authority WHERE name = 'ROLE_USER')"/>
         </insert>
     </changeSet>
+
+    <changeSet id="2_data" author="galjente">
+        <insert tableName="authority">
+            <column name="name" value="ROLE_ACTUATOR"/>
+        </insert>
+
+        <insert tableName="user_authority">
+            <column name="user_fk" valueComputed="(SELECT id FROM user WHERE email = 'admin@galjente.eu')"/>
+            <column name="authority_fk" valueComputed="(SELECT id FROM authority WHERE name = 'ROLE_ACTUATOR')"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>

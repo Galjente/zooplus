@@ -5,4 +5,4 @@ deploy:
   provider: heroku
   app: zooplus-galjente
   api_key:
-    secure: "fa18fcd8-2b97-45d2-85af-66f05b0b79a6"
+    secure: HEROKU_API_KEY

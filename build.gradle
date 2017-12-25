@@ -44,6 +44,7 @@ dependencies {
     compile("org.liquibase:liquibase-core")
 
     runtime("com.h2database:h2")
+    compile("mysql:mysql-connector-java:6.0.6")
 
     testCompile("junit:junit")
     testCompile("org.mockito:mockito-core")
