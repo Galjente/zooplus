@@ -14,6 +14,14 @@ This README would normally document whatever steps are necessary to get your app
 * Install Gradle (Optional)
 * run app from IDE or from command line
 
+### Home work includes ###
+* login page
+* registration page
+* Currency converter with history
+* Spring boot actuator for monitoring
+* Integration with travis-ci and heroku (https://zooplus-galjente.herokuapp.com/)
+* Default user with actuator access rights(admin@galjente.eu:1234)
+
 ### Clone ###
 To get started you can simply clone this repository using git:
 ```
